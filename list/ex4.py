@@ -5,7 +5,6 @@ x: 0.00, 0.25, 0.50, 0.75, 1.00
 f(x): 1.4815 × 10^−1, 8.9213 × 10^−2, 5.2478 × 10^−2, 2.9630 × 10^−2, 1.5625 × 10^−2'''
 
 import numpy as np
-import math
 import matplotlib.pyplot as plt
 
 x = np.array([0.00, 0.25, 0.50, 0.75, 1.00])
