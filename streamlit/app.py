@@ -270,7 +270,7 @@ def exercicio_9():
         st.header("RESULTADO")
         st.markdown("""
         ###
-        Clique no botão abaixo para executar o cálculo e visualizar os resultados e o gráfico.
+        Executar Exercício 9.
         """)
         
         if st.button("Calcular e Mostrar Gráfico"):
