@@ -49,4 +49,4 @@ plt.grid(True)
 plt.show()
 
 print(f'Integral pela regra dos trapezios: {trapezios:.6f}')
-print(f'Intregral pela regra de Simpson: {simpson_total:.6f}')
+print(f'Intregral pela regra de Simpson: {simpson_soma:.6f}')
