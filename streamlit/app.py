@@ -36,7 +36,7 @@ def plot_integral(trapezios, simpson_soma):
     x_fine = np.linspace(0, 1.75, 100)
     y_fine = f_exato(x_fine)
     
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(6, 3))  # Reduzido de (10, 6) para (8, 5)
     
     # Definir fundo adaptativo (mesmo fundo do Streamlit)
     fig.patch.set_facecolor('none')
@@ -52,25 +52,25 @@ def plot_integral(trapezios, simpson_soma):
     ax.axhline(0, color='black', linestyle='--', alpha=0.3)
     ax.set_xlabel('x')
     ax.set_ylabel('f(x)')
-    ax.set_title(f'Integral de f(x) de 0 a 1.75\nTrapézios: {trapezios:.6f}, Simpson: {simpson_soma:.6f}')
+    #ax.set_title(f'Integral de f(x) de 0 a 1.75\nTrapézios: {trapezios:.6f}, Simpson: {simpson_soma:.6f}')
     ax.legend()
     ax.grid(True)
     return fig
 
 # Interface do Streamlit
-st.title("Cálculo Numérico de Integral no Intervalo [0, 1.75]")
+st.title("Cálculo Numérico Q1 2025 - Lista 3")
 
-# Abas
-tab1, tab2, tab3 = st.tabs(["Introdução", "Metodologia", "Conclusão"])
+# Abas com ícones
+tab1, tab2, tab3 = st.tabs(["📝 Introdução", "🔍 Metodologia", "📊 Resultado"])
 
 with tab1:
-    st.header("Introdução")
+    st.header("INTRODUÇÃO")
     st.markdown("""
-    ### Enunciado
-    Calcule a integral de uma função no intervalo [0, 1.75] utilizando os valores tabelados abaixo:
+    ### Exercício 6:
+    Calcule a integral de uma função $f(x) = (x-2)^2/(x+3)^3$ no intervalo $[0, 1.75]$ utilizando os valores tabelados abaixo:
     
-    **x**: 0.00, 0.25, 0.50, 0.75, 1.00, 1.25, 1.50, 1.75  
-    **f(x)**: 1.4815×10⁻¹, 8.9213×10⁻², 5.2478×10⁻², 2.9630×10⁻², 1.5625×10⁻², 8.2150×10⁻³, 4.0100×10⁻³, 2.1000×10⁻³
+    $x: 0.00, 0.25, 0.50, 0.75, 1.00, 1.25, 1.50, 1.75$\n
+    $f(x): 1.4815×10⁻¹, 8.9213×10⁻², 5.2478×10⁻², 2.9630×10⁻², 1.5625×10⁻², 8.2150×10⁻³, 4.0100×10⁻³, 2.1000×10⁻³$
     
     Compare os resultados obtidos pela **Regra dos Trapézios** e pela **Regra de Simpson**.
     
@@ -79,42 +79,36 @@ with tab1:
     """)
 
 with tab2:
-    st.header("Metodologia")
-    st.markdown("""
-    ### Métodos Utilizados
-    
+    st.header("METODOLOGIA")
+    st.markdown("""  
     #### 1. Regra dos Trapézios
-    A Regra dos Trapézios aproxima a integral dividindo a área sob a curva em trapézios. Para $n$ pontos, a fórmula é:
+    **Breve Explicação**: A Regra dos Trapézios aproxima a integral dividindo a área sob a curva em trapézios, somando suas áreas para estimar o valor total da integral.
     """)
     st.latex(r"""
     \int_a^b f(x) \, dx \approx \frac{h}{2} \left[ f(x_0) + 2 \sum_{i=1}^{n-1} f(x_i) + f(x_n) \right]
     """)
     st.markdown("""
-    onde $h = (b-a)/n é o tamanho do intervalo, e $x_i$ são os pontos tabelados.
+    onde $h = (b-a)/n$ é o tamanho do intervalo, e $x_i$ são os pontos tabelados.
     
     #### 2. Regra de Simpson
-    A Regra de Simpson utiliza polinômios quadráticos para aproximar a função em intervalos de dois subintervalos. A fórmula composta para $n$ par é:
+    **Breve Explicação**: A Regra de Simpson usa polinômios quadráticos para aproximar a função em grupos de dois subintervalos, proporcionando maior precisão que a Regra dos Trapézios.
     """)
     st.latex(r"""
     \int_a^b f(x) \, dx \approx \frac{h}{3} \left[ f(x_0) + 4 \sum_{i=1,3,\dots}^{n-1} f(x_i) + 2 \sum_{i=2,4,\dots}^{n-2} f(x_i) + f(x_n) \right]
     """)
     st.markdown("""
-    onde $h = (b-a)/n é o tamanho do intervalo, e $x_i$ são os pontos tabelados. O primeiro somatório inclui os pontos com índices ímpares ($i=1,3,\dots,n-1$), e o segundo inclui os pontos com índices pares ($i=2,4,\dots,n-2$). Como o intervalo [0, 1.75] contém 8 pontos (7 subintervalos), aplicamos a Regra de Simpson até $x = 1.5$ (6 subintervalos) e usamos a Regra dos Trapézios para o último subintervalo [1.5, 1.75].
+    onde $h = (b-a)/n$ é o tamanho do intervalo, e $x_i$ são os pontos tabelados. O primeiro somatório inclui os pontos com índices ímpares ($i=1,3,\dots,n-1$), e o segundo inclui os pontos com índices pares ($i=2,4,\dots,n-2$). Como o intervalo [0, 1.75] contém 8 pontos (7 subintervalos), aplicamos a Regra de Simpson até $x = 1.5$ (6 subintervalos) e usamos a Regra dos Trapézios para o último subintervalo [1.5, 1.75].
     
     ### Implementação
     - **Dados**: Utilizamos os pontos tabelados fornecidos.
     - **Cálculo**: Aplicamos as fórmulas acima para calcular as integrais.
-    - **Gráfico**: Plotamos a função exata $f(x) = (x-2)^2/(x+3)^3 os pontos tabelados e os trapézios para visualização.
+    - **Gráfico**: Plotamos a função exata $f(x) = (x-2)^2/(x+3)^3$, os pontos tabelados e os trapézios para visualização.
     """)
 
 with tab3:
-    st.header("Conclusão")
-    st.markdown("""
-    ### Resultados
-    Clique no botão abaixo para executar o cálculo e visualizar os resultados e o gráfico.
-    """)
+    st.header("RESULTADO")
     
-    if st.button("Calcular e Mostrar Gráfico"):
+    if st.button("Executar Exercício 6"):
         trapezios, simpson_soma = calcular_integrais()
         st.markdown("""
         - **Regra dos Trapézios**: {:.6f}
@@ -127,11 +121,53 @@ with tab3:
         st.pyplot(fig)
         
         st.markdown("""
+        ### Código dos Métodos
+        Abaixo, o código Python usado para calcular as integrais pelos métodos dos Trapézios e de Simpson, exibido em colunas para melhor organização:
+        """)
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("**Regra dos Trapézios**")
+            st.code("""
+# Regra dos Trapézios
+trapezios = (h / 2) * (f[0] + 2 * np.sum(f[1:n]) + f[n])
+            """, language="python")
+            st.markdown("""
+            **Explicação Detalhada**:
+            - **Parâmetro $h$ **: Calculado como $h = (b-a)/n = (1.75-0)/7 = 0.25$, onde $n = 7$ é o número de subintervalos.
+            - **Soma dos pontos intermediários**: A função `np.sum(f[1:n])` soma os valores de $f(x_i)$ para $i=1$ até $i=6$ (excluindo os extremos).
+            - **Multiplicação por 2**: Os pontos intermediários são multiplicados por 2, conforme a fórmula.
+            - **Extremos**: $f(x_0) = f(0) e f(x_n) = f(1.75)$ são somados.
+            - Fator $h/2$: O resultado é multiplicado por $0.25/2 = 0.125$ para obter a integral aproximada.
+            """)
+        
+        with col2:
+            st.markdown("**Regra de Simpson**")
+            st.code("""
+# Regra  Regra de Simpson composta + trapézio
+n_simpson = 6
+simpson = (h/3) * (f[0] + 4 * (f[1] + f[3] + f[5]) + 2 * (f[2] + f[4]) + f[6])
+trapezio_aux = (h/2) * (f[6] + f[7])
+simpson_soma = simpson + trapezio_aux
+            """, language="python")
+            st.markdown("""
+            **Explicação Detalhada**:
+            - **Simpson até $x=1.5$: Usa 6 subintervalos $n=6$. O fator $h/3 = 0.25/3 = 0.08333$ multiplica a soma:
+              - $f(x_0) = f(0) e f(x_6) = f(1.5)$ com peso 1.
+              - Pontos ímpares $f(x_1), f(x_3), f(x_5)$ com peso 4.
+              - Pontos pares $(f(x_2), f(x_4)$ com peso 2.
+            - **Trapézio auxiliar**: Para o intervalo $[1.5, 1.75]$, calcula $h/2$ com $f(1.5) + f(1.75)$.
+            - **Soma final**: Combina o resultado de Simpson com o trapézio auxiliar para cobrir todo o intervalo $[0, 1.75]$s.
+            """)
+        
+        st.markdown("""
         ### Discussão
         - **Precisão**: A Regra de Simpson geralmente é mais precisa que a Regra dos Trapézios, pois usa polinômios de segundo grau, enquanto os trapézios usam aproximações lineares. No entanto, como usamos Simpson composta apenas até $x = 1.5$ e um trapézio para o último intervalo, a diferença pode ser menos significativa.
-        - **Erro**: A função f(x) = (x-2)^2/(x+3)^3 é suave no intervalo [0, 1.75], o que favorece ambos os métodos. A Regra de Simpson tem erro de ordem $O(h^4)$, enquanto a dos Trapézios tem erro de ordem $O(h^2)$.
+        - **Erro**: A função $f(x) = (x-2)^2/(x+3)^3$ é suave no intervalo [0, 1.75], o que favorece ambos os métodos. A Regra de Simpson tem erro de ordem $O(h^4)$, enquanto a dos Trapézios tem erro de ordem $O(h^2)$.
         - **Comparação**: Os resultados são próximos, mas a Regra de Simpson tende a ser mais próxima do valor exato devido à sua maior ordem de precisão.
         
-        ### Código
-        O código está disponível no próprio arquivo desta aplicação Streamlit. Para acesso ao código-fonte, consulte o repositório no [GitHub](https://github.com/seu_usuario/seu_repositorio) ou execute localmente com Streamlit.
+        ### Referências
+        XAI. Grok. Disponível em: <https://x.ai/grok>. Acesso em: 21 abr. 2025.  
+        SEU_USUARIO. Repositório do Projeto. Disponível em: <https://github.com/seu_usuario/seu_repositorio>. Acesso em: 21 abr. 2025.
         """)
