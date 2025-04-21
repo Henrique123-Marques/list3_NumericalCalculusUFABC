@@ -168,6 +168,7 @@ simpson_soma = simpson + trapezio_aux
         - **Comparação**: Os resultados são próximos, mas a Regra de Simpson tende a ser mais próxima do valor exato devido à sua maior ordem de precisão.
         
         ### Referências
-        XAI. Grok. Disponível em: <https://x.ai/grok>. Acesso em: 21 abr. 2025.  
-        Henrique123-Marques. Repositório do Projeto. Disponível em: <https://github.com/Henrique123-Marques/list3_NumericalCalculusUFABC>. Acesso em: 21 abr. 2025.
+        XAI. Grok. Disponível em: <https://x.ai/grok>.  
+        Henrique123-Marques. Repositório do Projeto. Disponível em: <https://github.com/Henrique123-Marques/list3_NumericalCalculusUFABC>
+        FREITAS. Raphael de Oliveira. CORRÊA. Rejane Izabel Lima. VAZ. Patrícia Machado Sebajos. Cálculo Numérico. Editora SAGAH. 2019.
         """)
