@@ -169,6 +169,6 @@ simpson_soma = simpson + trapezio_aux
         
         ### Referências
         XAI. Grok. Disponível em: <https://x.ai/grok>.  
-        Henrique123-Marques. Repositório do Projeto. Disponível em: <https://github.com/Henrique123-Marques/list3_NumericalCalculusUFABC>
+        Henrique123-Marques. Repositório do Projeto. Disponível em: <https://github.com/Henrique123-Marques/list3_NumericalCalculusUFABC>. \n
         FREITAS. Raphael de Oliveira. CORRÊA. Rejane Izabel Lima. VAZ. Patrícia Machado Sebajos. Cálculo Numérico. Editora SAGAH. 2019.
         """)
