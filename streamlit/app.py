@@ -169,5 +169,5 @@ simpson_soma = simpson + trapezio_aux
         
         ### Referências
         XAI. Grok. Disponível em: <https://x.ai/grok>. Acesso em: 21 abr. 2025.  
-        SEU_USUARIO. Repositório do Projeto. Disponível em: <https://github.com/seu_usuario/seu_repositorio>. Acesso em: 21 abr. 2025.
+        Henrique123-Marques. Repositório do Projeto. Disponível em: <https://github.com/Henrique123-Marques/list3_NumericalCalculusUFABC>. Acesso em: 21 abr. 2025.
         """)
